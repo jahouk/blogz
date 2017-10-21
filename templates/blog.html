@@ -11,13 +11,25 @@
             {% endif %}
             {% if view == 'single' %}
             <article>
-                <h1 align = 'center'>{{blog.title}}</h1>
+                <header>
+                    <h1 align = 'center'>{{blog.title}}</h1>
+                </header>
                 <p>{{blog.body}}</p>
+                <footer>
+                    <p>by <a href="blog?user={{blog.owner.username}}">
+                        {{blog.owner.username}}</a></p>
+                </footer>
             </article>
             {% else %}
             <article>
-                <a href="blog?id={{blog.id}}"><h1>{{blog.title}}</h1></a>
+                <header>
+                    <a href="blog?id={{blog.id}}"><h1>{{blog.title}}</h1></a>
+                </header>
                 <p>{{blog.body}}</p>
+                <footer>
+                    <p>by <a href="blog?user={{blog.owner.username}}">
+                        {{blog.owner.username}}</a></p>
+                </footer>
             </article>
             {% endif %}
         {% endfor %}
