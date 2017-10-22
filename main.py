@@ -62,6 +62,7 @@ def login():
     return render_template('login.html')
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
+    username = ""
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -70,7 +71,7 @@ def signup():
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             flash('Username already in use', 'error')
-        elif username < 3 or password < 3:
+        elif len(username) < 3 or len(password) < 3:
             flash('Invalid username or invalid password')
         elif password != verify:
             flash('Passwords do not match', 'error')
